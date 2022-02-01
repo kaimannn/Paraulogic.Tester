@@ -18,7 +18,7 @@ public partial class FMain : Form
             StartButton.Enabled = false;
 
             using var client = new HttpClient();
-            var response = await client.GetStringAsync("https://www.vilaweb.cat/paraulogic/");
+            string response = await client.GetStringAsync("https://www.vilaweb.cat/paraulogic/");
             response = response[response.IndexOf("var t")..];
             response = response[response.IndexOf("\"p\":")..];
             response = response.Substring(4, response.IndexOf(';')).Trim();
